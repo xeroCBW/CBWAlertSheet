@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "CBWAlertSheet.h"
 @interface ViewController ()
 
 @end
@@ -16,12 +16,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
+    
+   }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    //关闭或者修改手势密码
+    CBWAlertSheet *sheet = [[CBWAlertSheet alloc]init];
+    sheet.type = CBWAlertSheetTypeGap;
+    
+    [sheet addSheetWithTitle:@"关闭手势密码" color:[UIColor blackColor] handler:^(CBWAlertSheet *alertView) {
+        
+        NSLog(@"关闭手势密码");
+        
+    }];
+    
+    [sheet addSheetWithTitle:@"修改手势密码" color:[UIColor blackColor]  handler:^(CBWAlertSheet *alertView) {
+        
+        NSLog(@"修改手势密码");
+        
+    }];
+    
+    [sheet show];
 }
 
 @end

@@ -13,6 +13,7 @@
 		D078C19C1D2609A9009A2DF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D078C19A1D2609A9009A2DF0 /* Main.storyboard */; };
 		D078C19E1D2609A9009A2DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D078C19D1D2609A9009A2DF0 /* Assets.xcassets */; };
 		D078C1A11D2609A9009A2DF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D078C19F1D2609A9009A2DF0 /* LaunchScreen.storyboard */; };
+		D078C1AF1D260A40009A2DF0 /* CBWAlertSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D078C1AE1D260A40009A2DF0 /* CBWAlertSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		D078C19D1D2609A9009A2DF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D078C1A01D2609A9009A2DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D078C1A21D2609A9009A2DF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D078C1AD1D260A40009A2DF0 /* CBWAlertSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWAlertSheet.h; sourceTree = "<group>"; };
+		D078C1AE1D260A40009A2DF0 /* CBWAlertSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWAlertSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +45,7 @@
 		D078C1851D2609A9009A2DF0 = {
 			isa = PBXGroup;
 			children = (
+				D078C1AC1D260A40009A2DF0 /* CBWAlertSheet */,
 				D078C1901D2609A9009A2DF0 /* CBWAlertSheetDemo */,
 				D078C18F1D2609A9009A2DF0 /* Products */,
 			);
@@ -77,6 +81,15 @@
 				D078C1921D2609A9009A2DF0 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D078C1AC1D260A40009A2DF0 /* CBWAlertSheet */ = {
+			isa = PBXGroup;
+			children = (
+				D078C1AD1D260A40009A2DF0 /* CBWAlertSheet.h */,
+				D078C1AE1D260A40009A2DF0 /* CBWAlertSheet.m */,
+			);
+			path = CBWAlertSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +165,7 @@
 				D078C1991D2609A9009A2DF0 /* ViewController.m in Sources */,
 				D078C1961D2609A9009A2DF0 /* AppDelegate.m in Sources */,
 				D078C1931D2609A9009A2DF0 /* main.m in Sources */,
+				D078C1AF1D260A40009A2DF0 /* CBWAlertSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
