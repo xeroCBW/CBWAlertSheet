@@ -24,7 +24,8 @@
     //关闭或者修改手势密码
     CBWAlertSheet *sheet = [[CBWAlertSheet alloc]init];
     sheet.type = CBWAlertSheetTypeGap;
-    
+    sheet.cancleButtonColor = [UIColor redColor];
+     sheet.cancleButtonTextColor = [UIColor yellowColor];
     [sheet addSheetWithTitle:@"关闭手势密码" color:[UIColor blackColor] handler:^(CBWAlertSheet *alertView) {
         
         NSLog(@"关闭手势密码");

@@ -20,6 +20,12 @@ typedef void(^CBWAlertSheetHandler) (CBWAlertSheet *alertView);
 /** 处理button 点击的block*/
 @property (nonatomic ,strong) void (^buttonClickActionBlock)(CBWAlertSheet *alertView,NSUInteger index);
 
+/** cancleButtonColor*/
+@property (nonatomic ,strong) UIColor *cancleButtonColor;
+
+/** cancleButtonTextColor*/
+@property (nonatomic ,strong) UIColor *cancleButtonTextColor;
+
 /** 取消按钮与下方是否有间隙*/
 @property (nonatomic ,assign) CBWAlertSheetType type;
 

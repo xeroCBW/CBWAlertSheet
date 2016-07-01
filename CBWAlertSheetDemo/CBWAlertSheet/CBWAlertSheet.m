@@ -67,7 +67,6 @@ static float const gap = 10;
         self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
         self.alpha = 0.0;
      
-        
     }
     return self;
 }
@@ -98,12 +97,13 @@ static float const gap = 10;
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:@"取消" forState:UIControlStateNormal];
-        UIColor *itemColor = cancelButtonTitleColor;
+        UIColor *itemColor = self.cancleButtonTextColor?self.cancleButtonTextColor:cancelButtonTitleColor;
         [button setTitleColor:itemColor forState:UIControlStateNormal];
         [button setTitleColor:itemColor forState:UIControlStateHighlighted];
         [button.titleLabel setFont:[UIFont systemFontOfSize:buttonFont]];
         button.backgroundColor = [UIColor clearColor];
-        [button setBackgroundImage:[self imageWithColor:cancelButtonNormalColor] forState:UIControlStateNormal];
+        UIColor *cancleButtonNormalColor = self.cancleButtonColor ? self.cancleButtonColor:cancelButtonNormalColor;
+        [button setBackgroundImage:[self imageWithColor:cancleButtonNormalColor] forState:UIControlStateNormal];
         [button setBackgroundImage:[self imageWithColor:cancelButtonSelectedColor] forState:UIControlStateHighlighted];
         float btnX = 0;
         float btnY = h - buttonHeight;
