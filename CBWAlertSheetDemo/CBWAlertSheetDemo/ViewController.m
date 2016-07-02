@@ -19,10 +19,17 @@
     
    }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (IBAction)customTypeAction:(UIButton *)sender {
     
     [self customAlertSheet];
 }
+
+
+- (IBAction)systemTypeAtion:(UIButton *)sender {
+    
+    [self alertSheet];
+}
+
 
 - (void)customAlertSheet{
     

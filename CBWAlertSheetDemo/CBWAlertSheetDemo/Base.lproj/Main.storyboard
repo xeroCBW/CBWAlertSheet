@@ -16,7 +16,29 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LeD-vX-kai">
+                                <rect key="frame" x="270" y="295" width="60" height="30"/>
+                                <state key="normal" title="系统自带"/>
+                                <connections>
+                                    <action selector="systemTypeAtion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mJG-7r-WC6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pw3-X4-i3e">
+                                <rect key="frame" x="278" y="185" width="45" height="30"/>
+                                <state key="normal" title="自定义"/>
+                                <connections>
+                                    <action selector="customTypeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xfw-1s-eUF"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LeD-vX-kai" firstAttribute="top" secondItem="Pw3-X4-i3e" secondAttribute="bottom" constant="80" id="FWJ-P8-4YC"/>
+                            <constraint firstItem="Pw3-X4-i3e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="G5D-V7-6cm"/>
+                            <constraint firstItem="Pw3-X4-i3e" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="THs-TU-tNn"/>
+                            <constraint firstItem="LeD-vX-kai" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="adp-Ti-Pqg"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
