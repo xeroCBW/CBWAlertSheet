@@ -18,15 +18,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LeD-vX-kai">
-                                <rect key="frame" x="270" y="295" width="60" height="30"/>
+                                <rect key="frame" x="270" y="465" width="60" height="30"/>
                                 <state key="normal" title="系统自带"/>
                                 <connections>
                                     <action selector="systemTypeAtion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mJG-7r-WC6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUN-rz-4f4">
+                                <rect key="frame" x="247" y="245" width="105" height="30"/>
+                                <state key="normal" title="自定义没有标题"/>
+                                <connections>
+                                    <action selector="customTypeNoTitleTypeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Ox-3E-3Q3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do3-pg-Ez8">
+                                <rect key="frame" x="232.5" y="355" width="135" height="30"/>
+                                <state key="normal" title="自定义没有取消按钮"/>
+                                <connections>
+                                    <action selector="customNoCancelAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1gd-br-kzC"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pw3-X4-i3e">
-                                <rect key="frame" x="278" y="185" width="45" height="30"/>
-                                <state key="normal" title="自定义"/>
+                                <rect key="frame" x="255" y="135" width="90" height="30"/>
+                                <state key="normal" title="自定义有标题"/>
                                 <connections>
                                     <action selector="customTypeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xfw-1s-eUF"/>
                                 </connections>
@@ -36,9 +50,21 @@
                         <constraints>
                             <constraint firstItem="LeD-vX-kai" firstAttribute="top" secondItem="Pw3-X4-i3e" secondAttribute="bottom" constant="80" id="FWJ-P8-4YC"/>
                             <constraint firstItem="Pw3-X4-i3e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="G5D-V7-6cm"/>
-                            <constraint firstItem="Pw3-X4-i3e" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="THs-TU-tNn"/>
+                            <constraint firstItem="do3-pg-Ez8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GQc-CX-wZf"/>
+                            <constraint firstItem="gUN-rz-4f4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IDJ-um-r53"/>
+                            <constraint firstItem="do3-pg-Ez8" firstAttribute="top" secondItem="gUN-rz-4f4" secondAttribute="bottom" constant="80" id="KUF-xr-Uwf"/>
+                            <constraint firstItem="LeD-vX-kai" firstAttribute="top" secondItem="gUN-rz-4f4" secondAttribute="bottom" constant="80" id="LsD-p6-dUs"/>
+                            <constraint firstItem="Pw3-X4-i3e" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-150" id="THs-TU-tNn"/>
                             <constraint firstItem="LeD-vX-kai" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="adp-Ti-Pqg"/>
+                            <constraint firstItem="gUN-rz-4f4" firstAttribute="top" secondItem="Pw3-X4-i3e" secondAttribute="bottom" constant="80" id="foH-cs-gjq"/>
+                            <constraint firstItem="LeD-vX-kai" firstAttribute="top" secondItem="do3-pg-Ez8" secondAttribute="bottom" constant="80" id="nQ5-r0-YCa"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="FWJ-P8-4YC"/>
+                                <exclude reference="LsD-p6-dUs"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

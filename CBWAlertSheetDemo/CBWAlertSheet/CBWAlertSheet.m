@@ -14,7 +14,7 @@ static float const normalMargin = 20.0;
 static float const titleLabelBottomMargin = 5;
 static float const messageFont = 13.0;
 static float const margin = 0.5;
-static float const dismisDuring = 0.25f;
+static float const dismisDuring = 0.35f;
 static float const dismisDelay = 0.0f;
 static float const buttonFont = 17.0;
 static float const buttonHeight  = 50.0;
@@ -316,7 +316,7 @@ static float const gap = 10;//取消按钮与上面的 gap
     
     [self setUpButtons:self.contentView];
     
-    [[[[UIApplication sharedApplication] windows] firstObject] addSubview:self];
+    [[[[UIApplication sharedApplication] windows] lastObject] addSubview:self];
        
     //进行转场动画
     CGRect toRect = CGRectMake(0, screenH - self.contentView.frame.size.height, screenW,self.contentView.frame.size.height );
@@ -333,20 +333,20 @@ static float const gap = 10;//取消按钮与上面的 gap
     
     CGRect fromRect = CGRectMake(0, screenH, screenW,self.contentView.frame.size.height );
     
-  [UIView animateWithDuration:dismisDuring delay:dismisDelay usingSpringWithDamping:1.0f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
-                         
-                     self.contentView.frame = fromRect;
-                         self.alpha = 0.0;
-                         
-                     } completion:^(BOOL finished) {
-                         
-                         for (UIView *v in [self subviews]) {
-                             [v removeFromSuperview];
-                         }
-                         
-                         [self removeFromSuperview];
-                     }];
-
+    [UIView animateWithDuration:dismisDuring delay:dismisDelay usingSpringWithDamping:1.0f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
+        self.contentView.frame = fromRect;
+        self.alpha = 0.0;
+        
+    } completion:^(BOOL finished) {
+        
+        for (UIView *v in [self subviews]) {
+            [v removeFromSuperview];
+        }
+        
+        [self removeFromSuperview];
+    }];
+    
     
 }
 
