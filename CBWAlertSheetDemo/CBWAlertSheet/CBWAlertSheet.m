@@ -11,9 +11,9 @@
 static float const titleFont = 14.0;
 static float const lrMargin = 20;
 static float const normalMargin = 20.0;
-static float const titleLabelBottomMargin = 0;
+static float const titleLabelBottomMargin = 5;
 static float const messageFont = 13.0;
-static float const margin = 1.0;
+static float const margin = 0.5;
 static float const dismisDuring = 0.25f;
 static float const dismisDelay = 0.0f;
 static float const buttonFont = 17.0;
