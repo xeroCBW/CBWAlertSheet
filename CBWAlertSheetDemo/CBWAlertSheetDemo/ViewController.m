@@ -35,26 +35,9 @@
 //    sheet.messageTextColor = [UIColor redColor];
 //    sheet.cancleButtonColor = [UIColor redColor];
 //    sheet.cancleButtonTextColor = [UIColor yellowColor];
-    [sheet addSheetWithTitle:@"关闭手势密码" color:[UIColor blackColor] handler:^(CBWAlertSheet *alertView) {
-        
-        NSLog(@"关闭手势密码");
-        
-    }];
-    [sheet addSheetWithTitle:@"关闭手势密码" color:[UIColor blackColor] handler:^(CBWAlertSheet *alertView) {
-        
-        NSLog(@"关闭手势密码");
-        
-    }];
-    [sheet addSheetWithTitle:@"关闭手势密码" color:[UIColor blackColor] handler:^(CBWAlertSheet *alertView) {
-        
-        NSLog(@"关闭手势密码");
-        
-    }];
-    [sheet addSheetWithTitle:@"关闭手势密码" color:[UIColor blackColor] handler:^(CBWAlertSheet *alertView) {
-        
-        NSLog(@"关闭手势密码");
-        
-    }];
+    [sheet addSheetWithTitle:@"考虑考虑" color:[UIColor blackColor] handler:nil];
+    [sheet addSheetWithTitle:@"不要吧" color:[UIColor blackColor] handler:nil];
+    [sheet addSheetWithTitle:@"去意已决" color:[UIColor blackColor] handler:nil];
     [sheet show];
 }
 

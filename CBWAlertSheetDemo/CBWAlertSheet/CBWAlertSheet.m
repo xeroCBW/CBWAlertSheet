@@ -14,7 +14,7 @@ static float const normalMargin = 20.0;
 static float const titleLabelBottomMargin = 5;
 static float const messageFont = 13.0;
 static float const margin = 0.5;
-static float const dismisDuring = 0.25f;
+static float const dismisDuring = 0.5f;
 static float const dismisDelay = 0.0f;
 static float const buttonFont = 17.0;
 static float const buttonHeight  = 50.0;
@@ -225,7 +225,7 @@ static float const gap = 10;//取消按钮与上面的 gap
     button.backgroundColor = [UIColor clearColor];
     UIColor *cancleButtonNormalColor = self.cancleButtonColor ? self.cancleButtonColor:cancelButtonNormalColor;
     [button setBackgroundImage:[self imageWithColor:cancleButtonNormalColor] forState:UIControlStateNormal];
-    [button setBackgroundImage:[self imageWithColor:cancelButtonSelectedColor] forState:UIControlStateHighlighted];
+//    [button setBackgroundImage:[self imageWithColor:cancelButtonSelectedColor] forState:UIControlStateHighlighted];//需要换个颜色,太丑了
     float btnX = 0;
     float btnY = self.contentView.bounds.size.height - buttonHeight;
     float btnW = screenW;
@@ -299,17 +299,14 @@ static float const gap = 10;//取消按钮与上面的 gap
 
 - (void)buttonAction:(UIButton *)button{
     
+    [self dismiss];
+
     AlertSheetItem *item = self.items[button.tag];
     if (item.action) {
         item.action(self);
     }
-    [self dismiss];
 }
 
-//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//
-//    [self dismiss];
-//}
 
 #pragma mark - show && dismiss
 
