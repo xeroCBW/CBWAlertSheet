@@ -54,8 +54,8 @@
     sheet.messageTextColor = [UIColor greenColor];
     sheet.cancleButtonColor = [UIColor redColor];
     sheet.cancleButtonTextColor = [UIColor yellowColor];
-    [sheet addSheetWithTitle:@"好的,去点个赞!" color:[UIColor blackColor] handler:nil];
-    [sheet addSheetWithTitle:@"去意已决" color:[UIColor blackColor] handler:nil];
+    [sheet addSheetWithTitle:@"好的,去点个赞!" color:nil handler:nil];
+    [sheet addSheetWithTitle:@"去意已决" color:nil handler:nil];
     [sheet show];
 }
 

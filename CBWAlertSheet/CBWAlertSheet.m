@@ -23,7 +23,7 @@ static float const gap = 10;//取消按钮与上面的 gap
 #define screenW [UIScreen mainScreen].bounds.size.width
 #define screenH [UIScreen mainScreen].bounds.size.height
 
-#define defaultBlueColor [UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]
+#define defaultBlackColor [UIColor blackColor]
 #define colorHighLight [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:0.9]
 #define marginColor [UIColor colorWithRed:196.0/255 green:196.0/255 blue:201.0/255 alpha:1.0]
 
@@ -248,7 +248,7 @@ static float const gap = 10;//取消按钮与上面的 gap
         AlertSheetItem *item = self.items[i];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:item.title forState:UIControlStateNormal];
-        UIColor *itemColor = item.color?item.color:defaultBlueColor;
+        UIColor *itemColor = item.color?item.color:defaultBlackColor;
         [button setTitleColor:itemColor forState:UIControlStateNormal];
         [button setTitleColor:itemColor forState:UIControlStateHighlighted];
         [button.titleLabel setFont:[UIFont systemFontOfSize:buttonFont]];
