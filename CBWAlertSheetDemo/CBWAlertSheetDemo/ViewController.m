@@ -68,7 +68,7 @@
     sheet.messageTextColor = [UIColor greenColor];
     sheet.cancleButtonColor = [UIColor redColor];
     sheet.cancleButtonTextColor = [UIColor yellowColor];
-    [sheet addSheetWithTitle:@"胖子快去减肥啦!" color:[UIColor blackColor] handler:nil];
+    [sheet addSheetWithTitle:@"胖子,快去减肥啦!" color:[UIColor blackColor] handler:nil];
     [sheet addSheetWithTitle:@"黑子,你又变胖啦!" color:[UIColor blackColor] handler:nil];
     [sheet show];
 
@@ -84,7 +84,7 @@
     sheet.cancleButtonTextColor = [UIColor yellowColor];
     [sheet addSheetWithTitle:@"羊小年" color:[UIColor blackColor] handler:nil];
     [sheet addSheetWithTitle:@"陈小黑" color:[UIColor blackColor] handler:nil];
-    [sheet addSheetWithTitle:@"who is next..." color:[UIColor blackColor] handler:nil];
+    [sheet addSheetWithTitle:@"The next..." color:[UIColor blackColor] handler:nil];
 
     [sheet show];
 

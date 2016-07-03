@@ -210,6 +210,7 @@ static float const gap = 10;//取消按钮与上面的 gap
         UIView *margin = [[UIView alloc]initWithFrame:CGRectMake(x, y, w, h)];
         margin.backgroundColor = marginColor;
         [contentView addSubview:margin];
+        
     }
    
    }
@@ -350,7 +351,21 @@ static float const gap = 10;//取消按钮与上面的 gap
     
 }
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self];
+    BOOL isInContentView = CGRectContainsPoint(self.contentView.frame, point);
+    
+    if (!isInContentView) {
+        
+        [self dismiss];
+    }
+    
+}
+
 #pragma mark - private
+
 /**
  *  判断是否是空字符串
  */
