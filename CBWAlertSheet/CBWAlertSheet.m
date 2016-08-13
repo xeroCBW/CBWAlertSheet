@@ -332,11 +332,19 @@ static float const gap = 10;//取消按钮与上面的 gap
 
 - (void)dismiss{
     
-    CGRect fromRect = CGRectMake(0, screenH, screenW,self.contentView.frame.size.height);
-        
+    
+    //下拉框可以实现比较顺滑的消失效果-->高度设置成0就可以
+    
+    //往上弹的实现的话改变 height-->直接在屏幕中间会一闪(由于 y 值没有变 height 变成0),直接在屏幕中了
+    
+//    CGRect fromRect = CGRectMake(0, screenH, screenW,self.contentView.frame.size.height);
+//    
     [UIView animateWithDuration:dismisDuring delay:dismisDelay usingSpringWithDamping:1.0f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        CGRect frame = self.contentView.frame ;
         
-        self.contentView.frame = fromRect;
+        frame.origin.y = screenH;
+        
+        self.contentView.frame = frame;
         self.alpha = 0.0;
         
     } completion:^(BOOL finished) {
@@ -347,6 +355,28 @@ static float const gap = 10;//取消按钮与上面的 gap
         
         [self removeFromSuperview];
     }];
+    
+    
+    //换个普通的动画效果,实际并没有多大区别
+    
+//    [UIView animateWithDuration:0.25 animations:^{
+//        
+//        CGRect frame = self.contentView.frame ;
+//        
+//        frame.origin.y = screenH;
+//        
+//        self.contentView.frame = frame;
+//        self.alpha = 0.0;
+//
+//        
+//    } completion:^(BOOL finished) {
+//        
+//        for (UIView *v in [self subviews]) {
+//            [v removeFromSuperview];
+//        }
+//        
+//        [self removeFromSuperview];
+//    }];
     
     
 }
