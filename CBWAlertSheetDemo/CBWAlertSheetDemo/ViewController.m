@@ -48,8 +48,8 @@
     //关闭或者修改手势密码
     CBWAlertSheet *sheet = [[CBWAlertSheet alloc]init];
     sheet.type = CBWAlertSheetTypeCancelButton;
-    sheet.title = @"关闭手势密码";
-    sheet.message = @"自己学东西容易忘,也不会总结.总是一路捡起东西,走了几步捡到东西又把旧的东西扔掉,写这个让自己保持一个好的习惯.";
+    sheet.title = @"标题😄";
+    sheet.message = @"这个 alertSheet模仿微信的样式,尺寸,文字大小,布局都是跟微信一样的;可以自定义title/message/button/取消按钮等颜色哦.但是文字的大小,布局不可以改变,感觉微信的布局真心不错呢!";
     sheet.titleTextColor = [UIColor redColor];
     sheet.messageTextColor = [UIColor greenColor];
     sheet.cancleButtonColor = [UIColor redColor];
@@ -93,11 +93,11 @@
 
 - (void)alertSheet{
     
-    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"1231313231232关闭手势密码关闭手势密码关闭手势密码关闭手势密码关闭手势密码关闭手势密码关闭手势密码" message:@"3123123212321关闭手势密码关闭手势密码关闭手势密码关闭手势密码关闭手势密码" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"啦啦啦啦...." message:@"哈哈哈哈..." preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"werwerew" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"😢😢" style:UIAlertActionStyleDefault handler:nil];
     
-     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"werwerew" style:UIAlertActionStyleDefault handler:nil];
+     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"😊😊" style:UIAlertActionStyleDefault handler:nil];
     
     [alertVc addAction:action1];
     [alertVc addAction:action2];

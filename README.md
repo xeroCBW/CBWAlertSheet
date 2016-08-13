@@ -1,32 +1,36 @@
 # CBWAlertSheet
 ###自己写的 AlertSheet,总共有3种样式
 
-###1.有标题,有取消按钮
+这个 alertSheet模仿微信的样式,尺寸,文字大小,布局都是跟微信一样的;可以`自定义title/message/button/取消按钮等颜色`哦.但是`文字的大小,布局不可以改变`,感觉微信的布局真心不错呢!"
 
-![IMG_3864.PNG](http://upload-images.jianshu.io/upload_images/874748-befa3cbe4aa8e9c1.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+###1.有标题,有取消按钮--可以自定义 title/message 文字颜色
+
+
+
+![有标题和取消按钮样式](http://upload-images.jianshu.io/upload_images/874748-9460567c021f0d47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ```
 - (void)customAlertSheet{
     
-    //关闭或者修改手势密码
-    CBWAlertSheet *sheet = [[CBWAlertSheet alloc]init];
-    sheet.type = CBWAlertSheetTypeCancelButton;
-    sheet.title = @"关闭手势密码";
-    sheet.message = @"自己学东西容易忘,也不会总结.总是一路捡起东西,走了几步捡到东西又把旧的东西扔掉,写这个让自己保持一个好的习惯.";
-    sheet.titleTextColor = [UIColor redColor];
-    sheet.messageTextColor = [UIColor greenColor];
-    sheet.cancleButtonColor = [UIColor redColor];
-    sheet.cancleButtonTextColor = [UIColor yellowColor];
-    [sheet addSheetWithTitle:@"好的,去点个赞!" color:nil handler:nil];
-    [sheet addSheetWithTitle:@"去意已决" color:nil handler:nil];
-    [sheet show];
+    CBWAlertSheet *sheet = [[CBWAlertSheet alloc]init];
+    sheet.type = CBWAlertSheetTypeCancelButton;
+    sheet.title = @"标题😄";
+    sheet.message = @"这个 alertSheet模仿微信的样式,尺寸,文字大小,布局都是跟微信一样的;可以自定义title/message/button/取消按钮等颜色哦.但是文字的大小,布局不可以改变,感觉微信的布局真心不错呢!";
+    sheet.titleTextColor = [UIColor redColor];
+    sheet.messageTextColor = [UIColor greenColor];
+    sheet.cancleButtonColor = [UIColor redColor];
+    sheet.cancleButtonTextColor = [UIColor yellowColor];
+    [sheet addSheetWithTitle:@"好的,去点个赞!" color:nil handler:nil];
+    [sheet addSheetWithTitle:@"去意已决" color:nil handler:nil];
+    [sheet show];
 }
 
 ```
 
-###2.没有标题,有取消按钮
+###2.没有标题,有取消按钮--可以自定取消按钮的文字颜色/背景颜色
 
-![IMG_3865.PNG](http://upload-images.jianshu.io/upload_images/874748-22eb0ad6ebff790e.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![没有标题,有取消按钮样式](http://upload-images.jianshu.io/upload_images/874748-22eb0ad6ebff790e.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
 - (void)customAlertSheetNoTitleType{
@@ -46,7 +50,7 @@
 ```
 ###3.没有取消按钮,没有标题
 
-![IMG_3866.PNG](http://upload-images.jianshu.io/upload_images/874748-e5af25925b1a2463.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![没有取消按钮,没有标题样式](http://upload-images.jianshu.io/upload_images/874748-e5af25925b1a2463.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
 

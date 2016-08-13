@@ -340,6 +340,7 @@ static float const gap = 10;//取消按钮与上面的 gap
 //    CGRect fromRect = CGRectMake(0, screenH, screenW,self.contentView.frame.size.height);
 //    
     [UIView animateWithDuration:dismisDuring delay:dismisDelay usingSpringWithDamping:1.0f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
         CGRect frame = self.contentView.frame ;
         
         frame.origin.y = screenH;
