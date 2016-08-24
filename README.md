@@ -7,7 +7,7 @@
 
 
 
-![有标题和取消按钮样式](http://upload-images.jianshu.io/upload_images/874748-9460567c021f0d47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![有标题和取消按钮样式](http://upload-images.jianshu.io/upload_images/874748-9460567c021f0d47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200)
 
 
 ```
@@ -30,7 +30,7 @@
 
 ###2.没有标题,有取消按钮--可以自定取消按钮的文字颜色/背景颜色
 
-![没有标题,有取消按钮样式](http://upload-images.jianshu.io/upload_images/874748-22eb0ad6ebff790e.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![没有标题,有取消按钮样式](http://upload-images.jianshu.io/upload_images/874748-22eb0ad6ebff790e.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/200)
 
 ```
 - (void)customAlertSheetNoTitleType{
@@ -50,7 +50,7 @@
 ```
 ###3.没有取消按钮,没有标题
 
-![没有取消按钮,没有标题样式](http://upload-images.jianshu.io/upload_images/874748-e5af25925b1a2463.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![没有取消按钮,没有标题样式](http://upload-images.jianshu.io/upload_images/874748-e5af25925b1a2463.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/200)
 
 ```
 
