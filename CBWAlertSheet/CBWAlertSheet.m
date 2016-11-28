@@ -14,7 +14,7 @@ static float const normalMargin = 20.0;
 static float const titleLabelBottomMargin = 5;
 static float const messageFont = 13.0;
 static float const margin = 0.5;
-static float const dismisDuring = 0.7f;
+static float const dismisDuring = 0.3f;
 static float const dismisDelay = 0.0f;
 static float const buttonFont = 17.0;
 static float const buttonHeight  = 50.0;
@@ -32,6 +32,21 @@ static float const gap = 10;//取消按钮与上面的 gap
 #define cancelButtonSelectedColor colorHighLight
 #define gapColor [UIColor colorWithRed:232.0/255.0 green:232.0/255.0 blue:238.0/255.0 alpha:1.0]
 #define textDefaultColor [UIColor lightGrayColor]
+
+#pragma mark - CBWAlertSheetLabel
+
+@interface CBWAlertSheetLabel : UILabel
+
+@end
+
+@implementation CBWAlertSheetLabel
+
+//给 label 增加左右 padding
+- (void)drawTextInRect:(CGRect)rect {
+    UIEdgeInsets insets = {0, lrMargin, 0, lrMargin};
+    [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
+}
+@end
 
 #pragma mark - AlertButtonItem
 @interface AlertSheetItem : NSObject
@@ -67,9 +82,15 @@ static float const gap = 10;//取消按钮与上面的 gap
     if (self) {
         
         [self initBase];
+        [self addNotification];
      
     }
     return self;
+}
+
+-(void)dealloc{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (instancetype)initWithTitle:(NSString *)title andMessage:(NSString *)message{
@@ -91,6 +112,17 @@ static float const gap = 10;//取消按钮与上面的 gap
     self.alpha = 0.0;
 
 }
+
+#pragma mark - notificatioin
+
+- (void)addNotification{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:)name:UIDeviceOrientationDidChangeNotification object:nil];
+    
+}
+
+
+#pragma mark - subView
 
 -(void)addSheetWithTitle:(NSString *)title color:(UIColor *)color handler:(CBWAlertSheetHandler)handler{
     
@@ -163,7 +195,7 @@ static float const gap = 10;//取消按钮与上面的 gap
     
     if (![self isBlankString:title]) {
         
-        UILabel *titleLabel = [[UILabel alloc]init];
+        CBWAlertSheetLabel *titleLabel = [[CBWAlertSheetLabel alloc]init];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.text = title;
         titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:titleFont];
@@ -171,14 +203,15 @@ static float const gap = 10;//取消按钮与上面的 gap
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.backgroundColor = [UIColor whiteColor];
         titleLabel.numberOfLines = 0;
-        titleLabel.frame = CGRectMake(lrMargin, 0, w - 2*lrMargin, titleSize.height);
+        titleLabel.frame = CGRectMake(0, 0, w, titleSize.height);
+        titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;//设置宽度跟随屏幕
         titleLabel.center = CGPointMake(w * 0.5, normalMargin + titleSize.height * 0.5);
         [contentView addSubview:titleLabel];
     }
    
     if (![self isBlankString:message]) {
         // 初始化label
-        UILabel *messageLabel = [[UILabel alloc]init];
+        CBWAlertSheetLabel *messageLabel = [[CBWAlertSheetLabel alloc]init];
         messageLabel.textAlignment = NSTextAlignmentCenter;
         messageLabel.textColor = self.messageTextColor?self.messageTextColor:textDefaultColor;
         // label获取字符串
@@ -191,16 +224,15 @@ static float const gap = 10;//取消按钮与上面的 gap
         float messageY = [self isBlankString:title] ?
         normalMargin :
         normalMargin + titleSize.height + titleLabelBottomMargin;
-        
-        messageLabel.frame = CGRectMake(lrMargin, messageY, w - 2*lrMargin, messageSize.height);
+        messageLabel.frame = CGRectMake( 0, messageY, w, messageSize.height);
+        messageLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;//设置宽度跟随屏幕
         [contentView addSubview:messageLabel];
     }
     
     if (![self isBlankString:title]||![self isBlankString:message]) {
        
-        float delta = (self.type == CBWAlertSheetTypeCancelButton) ?
-        gap + buttonHeight:
-        0;
+      float delta = (self.type == CBWAlertSheetTypeCancelButton) ?
+      gap + buttonHeight:0;
         
         float x = 0;
         float y = h - delta - margin - (self.items.count * buttonHeight + (self.items.count - 1) * margin);
@@ -208,9 +240,9 @@ static float const gap = 10;//取消按钮与上面的 gap
         float h = margin;
         
         UIView *margin = [[UIView alloc]initWithFrame:CGRectMake(x, y, w, h)];
+        margin.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         margin.backgroundColor = marginColor;
         [contentView addSubview:margin];
-        
     }
    
    }
@@ -226,18 +258,19 @@ static float const gap = 10;//取消按钮与上面的 gap
     button.backgroundColor = [UIColor clearColor];
     UIColor *cancleButtonNormalColor = self.cancleButtonColor ? self.cancleButtonColor:cancelButtonNormalColor;
     [button setBackgroundImage:[self imageWithColor:cancleButtonNormalColor] forState:UIControlStateNormal];
-//    [button setBackgroundImage:[self imageWithColor:cancelButtonSelectedColor] forState:UIControlStateHighlighted];//需要换个颜色,太丑了
+
     float btnX = 0;
     float btnY = self.contentView.bounds.size.height - buttonHeight;
     float btnW = screenW;
     float btnH = buttonHeight;
-    [button setFrame:CGRectMake(btnX,btnY, btnW, btnH)];
+    [button setFrame:CGRectMake(btnX,btnY, btnW, btnH)];//开始预设宽度,后面屏幕旋转会UIViewAutoresizingFlexibleWidth进行跟随
+    button.autoresizingMask = UIViewAutoresizingFlexibleWidth;//设置宽度屏幕跟随
     [button addTarget:self action:@selector(cancelButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:button];
     
-    UIView *gapView = [[UIView alloc]initWithFrame:CGRectMake(0, btnY - gap, screenW, gap)];
+    UIView *gapView = [[UIView alloc]initWithFrame:CGRectMake(0, btnY - gap, screenW, gap)];//开始预设宽度,后面屏幕旋转会UIViewAutoresizingFlexibleWidth进行跟随
     gapView.backgroundColor = gapColor;
-    
+    gapView.autoresizingMask = UIViewAutoresizingFlexibleWidth;//设置宽度屏幕跟随
     [self.contentView addSubview:gapView];
 }
 
@@ -262,11 +295,13 @@ static float const gap = 10;//取消按钮与上面的 gap
         float base =self.contentView.bounds.size.height - (self.items.count * buttonHeight + (self.items.count - 1) * margin) - delta;
         float btnX = 0;
         float btnY = base +i * (buttonHeight + margin);
-        float btnW = screenW;
+        float btnW = screenW;//先预设值,后面屏幕旋转用UIViewAutoresizingFlexibleWidth
         float btnH = buttonHeight;
         
+        button.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [button setFrame:CGRectMake(btnX,btnY, btnW, btnH)];
         button.tag = i;
+        button.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [contentView addSubview:button];
         
@@ -281,10 +316,12 @@ static float const gap = 10;//取消按钮与上面的 gap
 
             float sepratorViewX = 0;
             float sepratorViewY = base + (i - 1) * (buttonHeight + margin) + buttonHeight;
-            float sepratorViewW = screenW;
+            float sepratorViewW = screenW;//先预设值,后面屏幕旋转用UIViewAutoresizingFlexibleWidth
             float sepratorViewH = margin;
             CGRect sepratorFrame = CGRectMake(sepratorViewX, sepratorViewY, sepratorViewW, sepratorViewH);
             UIView *sepratorView = [[UIView alloc]initWithFrame:sepratorFrame];
+            sepratorView.autoresizingMask = UIViewAutoresizingFlexibleWidth;//设置宽度屏幕跟随
+            
             sepratorView.backgroundColor = marginColor;
             [contentView addSubview:sepratorView];
         }
@@ -317,7 +354,15 @@ static float const gap = 10;//取消按钮与上面的 gap
     
     [self setUpButtons:self.contentView];
     
-    [[[[UIApplication sharedApplication] windows] lastObject] addSubview:self];
+    UIWindow *window = [[[UIApplication sharedApplication] windows] lastObject];
+    
+    //如果发现键盘windows 出现,就选键盘下一个 windows
+    if ([window isKindOfClass:[NSClassFromString(@"UIRemoteKeyboardWindow") class]]) {
+        
+        window = [[UIApplication sharedApplication].windows objectAtIndex:([UIApplication sharedApplication].windows.count -2)];
+    }
+    
+    [window addSubview:self];
        
     //进行转场动画
     CGRect toRect = CGRectMake(0, screenH - self.contentView.frame.size.height, screenW,self.contentView.frame.size.height );
@@ -337,9 +382,7 @@ static float const gap = 10;//取消按钮与上面的 gap
     
     //往上弹的实现的话改变 height-->直接在屏幕中间会一闪(由于 y 值没有变 height 变成0),直接在屏幕中了
     
-//    CGRect fromRect = CGRectMake(0, screenH, screenW,self.contentView.frame.size.height);
-//    
-    [UIView animateWithDuration:dismisDuring delay:dismisDelay usingSpringWithDamping:1.0f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:dismisDuring delay:dismisDelay usingSpringWithDamping:10.0f initialSpringVelocity:1.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
         
         CGRect frame = self.contentView.frame ;
         
@@ -356,30 +399,6 @@ static float const gap = 10;//取消按钮与上面的 gap
         
         [self removeFromSuperview];
     }];
-    
-    
-    //换个普通的动画效果,实际并没有多大区别
-    
-//    [UIView animateWithDuration:0.25 animations:^{
-//        
-//        CGRect frame = self.contentView.frame ;
-//        
-//        frame.origin.y = screenH;
-//        
-//        self.contentView.frame = frame;
-//        self.alpha = 0.0;
-//
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        for (UIView *v in [self subviews]) {
-//            [v removeFromSuperview];
-//        }
-//        
-//        [self removeFromSuperview];
-//    }];
-    
-    
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -392,6 +411,25 @@ static float const gap = 10;//取消按钮与上面的 gap
         
         [self dismiss];
     }
+    
+}
+
+#pragma mark - rotate
+
+- (void)orientChange:(UIDeviceOrientation )orientation{
+    
+    float w = [UIScreen mainScreen].bounds.size.width;
+    float h = [UIScreen mainScreen].bounds.size.height;
+    self.frame = CGRectMake(0, 0, w, h);
+    
+    float contentViewH = self.contentView.frame.size.height;
+    float contentViewW = w;
+    float contentViewY = h - contentViewH;
+    float contentViewX = 0;
+    
+    self.contentView.frame = CGRectMake(contentViewX, contentViewY, contentViewW, contentViewH);
+    
+    [self setNeedsLayout];
     
 }
 
@@ -436,3 +474,4 @@ static float const gap = 10;//取消按钮与上面的 gap
     return _items;
 }
 @end
+
